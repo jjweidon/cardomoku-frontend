@@ -21,8 +21,8 @@ const Title = styled.h1`
   z-index: 2;
 
   span {
-    font-size: clamp(3.5rem, 7vw, 5.6rem);
-    color: ${({ theme }) => theme.colors.black};
+    font-size: clamp(3.5rem, 8vw, 8.6rem);
+    font-weight: 300
   }
 `;
 
