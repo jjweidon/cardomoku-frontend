@@ -92,7 +92,6 @@ const createOCardSVG = () => `
 const getFaceImage = (rank, isOneEyed, isRed) => {
   const color = isRed ? '#FF0000' : '#000000';
   const faceColor = '#FFE4B5';
-  const clothColor = isRed ? '#FF69B4' : '#4169E1';
 
   switch (rank) {
     case 'K':
@@ -150,7 +149,7 @@ const getFaceImage = (rank, isOneEyed, isRed) => {
         <!-- 입 -->
         <path d="M-4 -5 Q0 -3 4 -5" stroke="${color}" fill="none"/>
         <!-- 옷깃 -->
-        <path d="M-15 10 Q0 35 15 10" fill="#4169E1"/>
+        <path d="M-15 10 Q0 35 15 10" fill="#000000"/>
       `;
     default:
       return '';
