@@ -10,9 +10,11 @@ const importAll = (r) => {
 const cards = importAll(require.context('../assets/cards', false, /\.svg$/));
 
 export const getCardImage = (suit, number, version = 1) => {
-  if (number === 'O') {
-    return cards[`o_${version}.svg`];
+  if (!number) {
+    const fileName = `${suit}_${version}.svg`;
+    return cards[fileName];
   }
   
-  return cards[`${suit.toLowerCase()}_${number.toLowerCase()}_${version}.svg`];
+  const fileName = `${suit}_${number}_${version}.svg`;
+  return cards[fileName];
 }; 

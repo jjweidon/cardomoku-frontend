@@ -21,8 +21,8 @@ const Title = styled.h1`
   z-index: 2;
 
   span {
-    font-size: clamp(3.5rem, 8vw, 8.6rem);
-    font-weight: 300
+    font-size: clamp(3.5rem, 7vw, 8.6rem);
+    font-weight: 100
   }
 `;
 
@@ -47,7 +47,7 @@ const Onboarding = () => {
   return (
     <OnboardingContainer>
       <CardBackground />
-      <Title><span>C</span>ardomoku</Title>
+      <Title><span>s</span>equence</Title>
       <KakaoButton
         src="/static/images/kakao_login_button.png"
         alt="카카오 로그인"
