@@ -4,15 +4,15 @@
   <rect width="169" height="244" rx="12" fill="white" stroke="#E5E5E5"/>
   
   <!-- 좌상단 숫자와 무늬 -->
-  <g transform="translate(12, 12)">
-    <text font-family="Arial" font-size="36" fill="#FF0000">K</text>
-    <text font-family="Arial" font-size="36" y="24" fill="#FF0000">♦</text>
+  <g transform="translate(20, 30)">
+    <text font-family="Arial" font-size="24" fill="#FF0000">K</text>
+    <text font-family="Arial" font-size="24" y="20" fill="#FF0000">♦</text>
   </g>
   
   <!-- 우하단 숫자와 무늬 (180도 회전) -->
-  <g transform="translate(157, 232) rotate(180)">
-    <text font-family="Arial" font-size="36" fill="#FF0000">K</text>
-    <text font-family="Arial" font-size="36" y="24" fill="#FF0000">♦</text>
+  <g transform="translate(149, 214) rotate(180)">
+    <text font-family="Arial" font-size="24" fill="#FF0000">K</text>
+    <text font-family="Arial" font-size="24" y="20" fill="#FF0000">♦</text>
   </g>
   
   <!-- 중앙 이미지 -->
@@ -23,11 +23,12 @@
         <!-- 얼굴 -->
         <circle cx="0" cy="-15" r="20" fill="#FFE4B5"/>
         <!-- 눈 -->
-        <circle cx="8" cy="-18" r="2" fill="#FF0000"/>
+        <circle cx="-8" cy="-18" r="2" fill="#000000"/>
+        <circle cx="8" cy="-18" r="2" fill="#000000"/>
         <!-- 코 -->
-        <path d="M0 -15 Q2 -12 0 -10" stroke="#FF0000" fill="none"/>
+        <path d="M0 -15 Q2 -12 0 -10" stroke="#000000" fill="none"/>
         <!-- 입 -->
-        <path d="M-5 -5 Q0 -2 5 -5" stroke="#FF0000" fill="none"/>
+        <path d="M-5 -5 Q0 -2 5 -5" stroke="#000000" fill="none"/>
         <!-- 옷깃 -->
         <path d="M-20 10 Q0 40 20 10" fill="#4169E1"/>
       

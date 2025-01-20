@@ -1,4 +1,6 @@
-const fontSize = 36;
+const cornerFontSize = 24;  // 좌상단, 우하단 숫자와 무늬 크기
+const centerFontSize = 28;  // 중앙 무늬들의 크기
+const aceFontSize = 64;     // A 카드 중앙 무늬 크기
 
 // 숫자 카드 템플릿 (2-10)
 const createNumberCardSVG = (suit, number, positions) => `
@@ -7,21 +9,28 @@ const createNumberCardSVG = (suit, number, positions) => `
   <rect width="169" height="244" rx="12" fill="white" stroke="#E5E5E5"/>
   
   <!-- 좌상단 숫자와 무늬 -->
-  <g transform="translate(12, 12)">
-    <text font-family="Arial" font-size="${fontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${number}</text>
-    <text font-family="Arial" font-size="${fontSize}" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
+  <g transform="translate(15, 25)">
+    <text font-family="Arial" font-size="${cornerFontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${number}</text>
+    <text font-family="Arial" font-size="${cornerFontSize}" y="20" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
   </g>
   
   <!-- 우하단 숫자와 무늬 (180도 회전) -->
-  <g transform="translate(157, 232) rotate(180)">
-    <text font-family="Arial" font-size="${fontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${number}</text>
-    <text font-family="Arial" font-size="${fontSize}" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
+  <g transform="translate(154, 219) rotate(180)">
+    <text font-family="Arial" font-size="${cornerFontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${number}</text>
+    <text font-family="Arial" font-size="${cornerFontSize}" y="20" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
   </g>
   
   <!-- 중앙 무늬들 -->
   ${positions.map(pos => `
     <g transform="translate(${pos.x}, ${pos.y})">
-      <text font-family="Arial" font-size="${fontSize}" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
+      <text 
+        font-family="Arial" 
+        font-size="${centerFontSize}" 
+        y="24" 
+        fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}"
+        text-anchor="middle"
+        dominant-baseline="middle"
+      >${suit}</text>
     </g>
   `).join('')}
 </svg>
@@ -34,15 +43,15 @@ const createFaceCardSVG = (suit, rank, isOneEyed = false) => `
   <rect width="169" height="244" rx="12" fill="white" stroke="#E5E5E5"/>
   
   <!-- 좌상단 숫자와 무늬 -->
-  <g transform="translate(12, 12)">
-    <text font-family="Arial" font-size="${fontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${rank}</text>
-    <text font-family="Arial" font-size="${fontSize}" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
+  <g transform="translate(20, 30)">
+    <text font-family="Arial" font-size="${cornerFontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${rank}</text>
+    <text font-family="Arial" font-size="${cornerFontSize}" y="20" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
   </g>
   
   <!-- 우하단 숫자와 무늬 (180도 회전) -->
-  <g transform="translate(157, 232) rotate(180)">
-    <text font-family="Arial" font-size="${fontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${rank}</text>
-    <text font-family="Arial" font-size="${fontSize}" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
+  <g transform="translate(149, 214) rotate(180)">
+    <text font-family="Arial" font-size="${cornerFontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${rank}</text>
+    <text font-family="Arial" font-size="${cornerFontSize}" y="20" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
   </g>
   
   <!-- 중앙 이미지 -->
@@ -59,20 +68,20 @@ const createAceCardSVG = (suit) => `
   <rect width="169" height="244" rx="12" fill="white" stroke="#E5E5E5"/>
   
   <!-- 좌상단 숫자와 무늬 -->
-  <g transform="translate(12, 12)">
-    <text font-family="Arial" font-size="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">A</text>
-    <text font-family="Arial" font-size="24" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
+  <g transform="translate(20, 30)">
+    <text font-family="Arial" font-size="${cornerFontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">A</text>
+    <text font-family="Arial" font-size="${cornerFontSize}" y="20" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
   </g>
   
   <!-- 우하단 숫자와 무늬 (180도 회전) -->
-  <g transform="translate(157, 232) rotate(180)">
-    <text font-family="Arial" font-size="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">A</text>
-    <text font-family="Arial" font-size="24" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
+  <g transform="translate(149, 214) rotate(180)">
+    <text font-family="Arial" font-size="${cornerFontSize}" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">A</text>
+    <text font-family="Arial" font-size="${cornerFontSize}" y="20" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}">${suit}</text>
   </g>
   
   <!-- 중앙 큰 무늬 -->
   <g transform="translate(84.5, 122)">
-    <text font-family="Arial" font-size="72" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}" text-anchor="middle">${suit}</text>
+    <text font-family="Arial" font-size="${aceFontSize}" y="24" fill="${suit === '♥' || suit === '♦' ? '#FF0000' : '#000000'}" text-anchor="middle">${suit}</text>
   </g>
 </svg>
 `;
@@ -101,15 +110,12 @@ const getFaceImage = (rank, isOneEyed, isRed) => {
         <!-- 얼굴 -->
         <circle cx="0" cy="-15" r="20" fill="${faceColor}"/>
         <!-- 눈 -->
-        ${isOneEyed ? 
-          `<circle cx="8" cy="-18" r="2" fill="${color}"/>` :
-          `<circle cx="-8" cy="-18" r="2" fill="${color}"/>
-           <circle cx="8" cy="-18" r="2" fill="${color}"/>`
-        }
+        <circle cx="-8" cy="-18" r="2" fill="#000000"/>
+        <circle cx="8" cy="-18" r="2" fill="#000000"/>
         <!-- 코 -->
-        <path d="M0 -15 Q2 -12 0 -10" stroke="${color}" fill="none"/>
+        <path d="M0 -15 Q2 -12 0 -10" stroke="#000000" fill="none"/>
         <!-- 입 -->
-        <path d="M-5 -5 Q0 -2 5 -5" stroke="${color}" fill="none"/>
+        <path d="M-5 -5 Q0 -2 5 -5" stroke="#000000" fill="none"/>
         <!-- 옷깃 -->
         <path d="M-20 10 Q0 40 20 10" fill="#4169E1"/>
       `;
@@ -120,15 +126,12 @@ const getFaceImage = (rank, isOneEyed, isRed) => {
         <!-- 얼굴 -->
         <circle cx="0" cy="-15" r="18" fill="${faceColor}"/>
         <!-- 눈 -->
-        ${isOneEyed ? 
-          `<circle cx="6" cy="-18" r="1.5" fill="${color}"/>` :
-          `<circle cx="-6" cy="-18" r="1.5" fill="${color}"/>
-           <circle cx="6" cy="-18" r="1.5" fill="${color}"/>`
-        }
+        <circle cx="-6" cy="-18" r="1.5" fill="#000000"/>
+        <circle cx="6" cy="-18" r="1.5" fill="#000000"/>
         <!-- 코 -->
-        <path d="M0 -15 Q1 -12 0 -10" stroke="${color}" fill="none"/>
+        <path d="M0 -15 Q1 -12 0 -10" stroke="#000000" fill="none"/>
         <!-- 입 -->
-        <path d="M-4 -5 Q0 -2 4 -5" stroke="${color}" fill="none"/>
+        <path d="M-4 -5 Q0 -2 4 -5" stroke="#000000" fill="none"/>
         <!-- 드레스 -->
         <path d="M-15 10 Q0 45 15 10" fill="#FF69B4"/>
       `;
@@ -140,14 +143,14 @@ const getFaceImage = (rank, isOneEyed, isRed) => {
         <circle cx="0" cy="-15" r="16" fill="${faceColor}"/>
         <!-- 눈 -->
         ${isOneEyed ? 
-          `<circle cx="6" cy="-18" r="1.5" fill="${color}"/>` :
-          `<circle cx="-6" cy="-18" r="1.5" fill="${color}"/>
-           <circle cx="6" cy="-18" r="1.5" fill="${color}"/>`
+          `<circle cx="6" cy="-18" r="1.5" fill="#000000"/>` :
+          `<circle cx="-6" cy="-18" r="1.5" fill="#000000"/>
+           <circle cx="6" cy="-18" r="1.5" fill="#000000"/>`
         }
         <!-- 코 -->
-        <path d="M0 -15 Q1 -12 0 -10" stroke="${color}" fill="none"/>
+        <path d="M0 -15 Q1 -12 0 -10" stroke="#000000" fill="none"/>
         <!-- 입 -->
-        <path d="M-4 -5 Q0 -3 4 -5" stroke="${color}" fill="none"/>
+        <path d="M-4 -5 Q0 -3 4 -5" stroke="#000000" fill="none"/>
         <!-- 옷깃 -->
         <path d="M-15 10 Q0 35 15 10" fill="#000000"/>
       `;
@@ -156,4 +159,102 @@ const getFaceImage = (rank, isOneEyed, isRed) => {
   }
 };
 
-export { createNumberCardSVG, createFaceCardSVG, createAceCardSVG, createOCardSVG }; 
+// getNumberPositions 함수 수정 - 수평 중앙정렬을 위한 x 좌표 재조정
+const getNumberPositions = (number) => {
+  const centerX = 84.5;  // 카드의 정중앙 X좌표
+  const spacing = 50;    // 좌우 열 사이의 간격
+
+  // y좌표 기준점들을 더 위로 이동
+  const row1 = 52;   // 72 -> 52
+  const row2 = 82;   // 102 -> 82
+  const row3 = 112;  // 142 -> 112
+  const row4 = 142;  // 172 -> 142
+
+  switch (number) {
+    case '2':
+      return [
+        { x: centerX, y: 52 },
+        { x: centerX, y: 132 }
+      ];
+    case '3':
+      return [
+        { x: centerX, y: 52 },
+        { x: centerX, y: 92 },
+        { x: centerX, y: 132 }
+      ];
+    case '4':
+      return [
+        { x: centerX - spacing/2, y: 52 },
+        { x: centerX + spacing/2, y: 52 },
+        { x: centerX - spacing/2, y: 132 },
+        { x: centerX + spacing/2, y: 132 }
+      ];
+    case '5':
+      return [
+        { x: centerX - spacing/2, y: 52 },
+        { x: centerX + spacing/2, y: 52 },
+        { x: centerX, y: 92 },
+        { x: centerX - spacing/2, y: 132 },
+        { x: centerX + spacing/2, y: 132 }
+      ];
+    case '6':
+      return [
+        { x: centerX - spacing/2, y: 52 },
+        { x: centerX + spacing/2, y: 52 },
+        { x: centerX - spacing/2, y: 92 },
+        { x: centerX + spacing/2, y: 92 },
+        { x: centerX - spacing/2, y: 132 },
+        { x: centerX + spacing/2, y: 132 }
+      ];
+    case '7':
+      return [
+        { x: centerX - spacing/2, y: 52 },
+        { x: centerX + spacing/2, y: 52 },
+        { x: centerX - spacing/2, y: 92 },
+        { x: centerX, y: 92 },
+        { x: centerX + spacing/2, y: 92 },
+        { x: centerX - spacing/2, y: 132 },
+        { x: centerX + spacing/2, y: 132 }
+      ];
+    case '8':
+      return [
+        { x: centerX - spacing/2, y: row1 },
+        { x: centerX + spacing/2, y: row1 },
+        { x: centerX - spacing/2, y: row2 },
+        { x: centerX + spacing/2, y: row2 },
+        { x: centerX - spacing/2, y: row3 },
+        { x: centerX + spacing/2, y: row3 },
+        { x: centerX - spacing/2, y: row4 },
+        { x: centerX + spacing/2, y: row4 }
+      ];
+    case '9':
+      return [
+        { x: centerX - spacing/2, y: row1 },
+        { x: centerX + spacing/2, y: row1 },
+        { x: centerX - spacing/2, y: row2 },
+        { x: centerX, y: row2 },
+        { x: centerX + spacing/2, y: row2 },
+        { x: centerX - spacing/2, y: row3 },
+        { x: centerX + spacing/2, y: row3 },
+        { x: centerX - spacing/2, y: row4 },
+        { x: centerX + spacing/2, y: row4 }
+      ];
+    case '10':
+      return [
+        { x: centerX - spacing/2, y: row1 },
+        { x: centerX + spacing/2, y: row1 },
+        { x: centerX - spacing/2, y: row2 },
+        { x: centerX, y: row2 },
+        { x: centerX + spacing/2, y: row2 },
+        { x: centerX - spacing/2, y: row3 },
+        { x: centerX, y: row3 },
+        { x: centerX + spacing/2, y: row3 },
+        { x: centerX - spacing/2, y: row4 },
+        { x: centerX + spacing/2, y: row4 }
+      ];
+    default:
+      return [];
+  }
+};
+
+module.exports = { createNumberCardSVG, createFaceCardSVG, createAceCardSVG, createOCardSVG }; 

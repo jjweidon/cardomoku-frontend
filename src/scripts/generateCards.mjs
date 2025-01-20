@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createNumberCardSVG, createFaceCardSVG, createAceCardSVG, createOCardSVG } from '../assets/cards/CardTemplate.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const { createNumberCardSVG, createFaceCardSVG, createAceCardSVG, createOCardSVG } = require('../assets/cards/CardTemplate.js');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
