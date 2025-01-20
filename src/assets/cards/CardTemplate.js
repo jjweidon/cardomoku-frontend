@@ -164,57 +164,57 @@ const getNumberPositions = (number) => {
   const centerX = 84.5;  // 카드의 정중앙 X좌표
   const spacing = 50;    // 좌우 열 사이의 간격
 
-  // y좌표 기준점들을 더 위로 이동
-  const row1 = 52;   // 72 -> 52
-  const row2 = 82;   // 102 -> 82
-  const row3 = 112;  // 142 -> 112
-  const row4 = 142;  // 172 -> 142
+  // y좌표 기준점들을 5씩 더 아래로 이동
+  const row1 = 47;   // 42 -> 47
+  const row2 = 77;   // 72 -> 77
+  const row3 = 107;  // 102 -> 107
+  const row4 = 137;  // 132 -> 137
 
   switch (number) {
     case '2':
       return [
-        { x: centerX, y: 52 },
-        { x: centerX, y: 132 }
+        { x: centerX, y: 47 },
+        { x: centerX, y: 127 }
       ];
     case '3':
       return [
-        { x: centerX, y: 52 },
-        { x: centerX, y: 92 },
-        { x: centerX, y: 132 }
+        { x: centerX, y: 47 },
+        { x: centerX, y: 87 },
+        { x: centerX, y: 127 }
       ];
     case '4':
       return [
-        { x: centerX - spacing/2, y: 52 },
-        { x: centerX + spacing/2, y: 52 },
-        { x: centerX - spacing/2, y: 132 },
-        { x: centerX + spacing/2, y: 132 }
+        { x: centerX - spacing/2, y: 47 },
+        { x: centerX + spacing/2, y: 47 },
+        { x: centerX - spacing/2, y: 127 },
+        { x: centerX + spacing/2, y: 127 }
       ];
     case '5':
       return [
-        { x: centerX - spacing/2, y: 52 },
-        { x: centerX + spacing/2, y: 52 },
-        { x: centerX, y: 92 },
-        { x: centerX - spacing/2, y: 132 },
-        { x: centerX + spacing/2, y: 132 }
+        { x: centerX - spacing/2, y: 47 },
+        { x: centerX + spacing/2, y: 47 },
+        { x: centerX, y: 87 },
+        { x: centerX - spacing/2, y: 127 },
+        { x: centerX + spacing/2, y: 127 }
       ];
     case '6':
       return [
-        { x: centerX - spacing/2, y: 52 },
-        { x: centerX + spacing/2, y: 52 },
-        { x: centerX - spacing/2, y: 92 },
-        { x: centerX + spacing/2, y: 92 },
-        { x: centerX - spacing/2, y: 132 },
-        { x: centerX + spacing/2, y: 132 }
+        { x: centerX - spacing/2, y: 47 },
+        { x: centerX + spacing/2, y: 47 },
+        { x: centerX - spacing/2, y: 87 },
+        { x: centerX + spacing/2, y: 87 },
+        { x: centerX - spacing/2, y: 127 },
+        { x: centerX + spacing/2, y: 127 }
       ];
     case '7':
       return [
-        { x: centerX - spacing/2, y: 52 },
-        { x: centerX + spacing/2, y: 52 },
-        { x: centerX - spacing/2, y: 92 },
-        { x: centerX, y: 92 },
-        { x: centerX + spacing/2, y: 92 },
-        { x: centerX - spacing/2, y: 132 },
-        { x: centerX + spacing/2, y: 132 }
+        { x: centerX - spacing/2, y: 47 },
+        { x: centerX + spacing/2, y: 47 },
+        { x: centerX - spacing/2, y: 87 },
+        { x: centerX, y: 87 },
+        { x: centerX + spacing/2, y: 87 },
+        { x: centerX - spacing/2, y: 127 },
+        { x: centerX + spacing/2, y: 127 }
       ];
     case '8':
       return [
@@ -257,4 +257,4 @@ const getNumberPositions = (number) => {
   }
 };
 
-module.exports = { createNumberCardSVG, createFaceCardSVG, createAceCardSVG, createOCardSVG }; 
+module.exports = { createNumberCardSVG, createFaceCardSVG, createAceCardSVG, createOCardSVG, getNumberPositions }; 

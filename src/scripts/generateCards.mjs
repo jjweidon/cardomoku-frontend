@@ -3,100 +3,11 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
-const { createNumberCardSVG, createFaceCardSVG, createAceCardSVG, createOCardSVG } = require('../assets/cards/CardTemplate.js');
+const { createNumberCardSVG, createFaceCardSVG, createAceCardSVG, createOCardSVG, getNumberPositions } = require('../assets/cards/CardTemplate.js');
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const CARD_DIR = path.join(__dirname, '../assets/cards');
-
-// 숫자 카드 위치 설정
-const getNumberPositions = (number) => {
-  switch (number) {
-    case '2':
-      return [
-        { x: 84.5, y: 82 },
-        { x: 84.5, y: 162 }
-      ];
-    case '3':
-      return [
-        { x: 84.5, y: 82 },
-        { x: 84.5, y: 122 },
-        { x: 84.5, y: 162 }
-      ];
-    case '4':
-      return [
-        { x: 54.5, y: 82 },
-        { x: 114.5, y: 82 },
-        { x: 54.5, y: 162 },
-        { x: 114.5, y: 162 }
-      ];
-    case '5':
-      return [
-        { x: 54.5, y: 82 },
-        { x: 114.5, y: 82 },
-        { x: 84.5, y: 122 },
-        { x: 54.5, y: 162 },
-        { x: 114.5, y: 162 }
-      ];
-    case '6':
-      return [
-        { x: 54.5, y: 82 },
-        { x: 114.5, y: 82 },
-        { x: 54.5, y: 122 },
-        { x: 114.5, y: 122 },
-        { x: 54.5, y: 162 },
-        { x: 114.5, y: 162 }
-      ];
-    case '7':
-      return [
-        { x: 54.5, y: 82 },
-        { x: 114.5, y: 82 },
-        { x: 54.5, y: 122 },
-        { x: 84.5, y: 122 },
-        { x: 114.5, y: 122 },
-        { x: 54.5, y: 162 },
-        { x: 114.5, y: 162 }
-      ];
-    case '8':
-      return [
-        { x: 54.5, y: 62 },
-        { x: 114.5, y: 62 },
-        { x: 54.5, y: 102 },
-        { x: 114.5, y: 102 },
-        { x: 54.5, y: 142 },
-        { x: 114.5, y: 142 },
-        { x: 54.5, y: 182 },
-        { x: 114.5, y: 182 }
-      ];
-    case '9':
-      return [
-        { x: 54.5, y: 62 },
-        { x: 114.5, y: 62 },
-        { x: 54.5, y: 102 },
-        { x: 84.5, y: 102 },
-        { x: 114.5, y: 102 },
-        { x: 54.5, y: 142 },
-        { x: 114.5, y: 142 },
-        { x: 54.5, y: 182 },
-        { x: 114.5, y: 182 }
-      ];
-    case '10':
-      return [
-        { x: 54.5, y: 62 },
-        { x: 114.5, y: 62 },
-        { x: 54.5, y: 102 },
-        { x: 84.5, y: 102 },
-        { x: 114.5, y: 102 },
-        { x: 54.5, y: 142 },
-        { x: 84.5, y: 142 },
-        { x: 114.5, y: 142 },
-        { x: 54.5, y: 182 },
-        { x: 114.5, y: 182 }
-      ];
-    default:
-      return [];
-  }
-};
 
 // 모든 무늬
 const suits = {

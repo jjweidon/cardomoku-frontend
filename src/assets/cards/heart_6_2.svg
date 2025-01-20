@@ -17,7 +17,7 @@
   
   <!-- 중앙 무늬들 -->
   
-    <g transform="translate(54.5, 82)">
+    <g transform="translate(59.5, 47)">
       <text 
         font-family="Arial" 
         font-size="28" 
@@ -28,7 +28,7 @@
       >♥</text>
     </g>
   
-    <g transform="translate(114.5, 82)">
+    <g transform="translate(109.5, 47)">
       <text 
         font-family="Arial" 
         font-size="28" 
@@ -39,7 +39,7 @@
       >♥</text>
     </g>
   
-    <g transform="translate(54.5, 122)">
+    <g transform="translate(59.5, 87)">
       <text 
         font-family="Arial" 
         font-size="28" 
@@ -50,7 +50,7 @@
       >♥</text>
     </g>
   
-    <g transform="translate(114.5, 122)">
+    <g transform="translate(109.5, 87)">
       <text 
         font-family="Arial" 
         font-size="28" 
@@ -61,7 +61,7 @@
       >♥</text>
     </g>
   
-    <g transform="translate(54.5, 162)">
+    <g transform="translate(59.5, 127)">
       <text 
         font-family="Arial" 
         font-size="28" 
@@ -72,7 +72,7 @@
       >♥</text>
     </g>
   
-    <g transform="translate(114.5, 162)">
+    <g transform="translate(109.5, 127)">
       <text 
         font-family="Arial" 
         font-size="28" 

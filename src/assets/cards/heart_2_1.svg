@@ -17,7 +17,7 @@
   
   <!-- 중앙 무늬들 -->
   
-    <g transform="translate(84.5, 82)">
+    <g transform="translate(84.5, 47)">
       <text 
         font-family="Arial" 
         font-size="28" 
@@ -28,7 +28,7 @@
       >♥</text>
     </g>
   
-    <g transform="translate(84.5, 162)">
+    <g transform="translate(84.5, 127)">
       <text 
         font-family="Arial" 
         font-size="28" 
