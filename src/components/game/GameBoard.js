@@ -4,16 +4,22 @@ import styled from 'styled-components';
 const BoardContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
   gap: 2px;
   padding: 4px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 6px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  align-items: center;
+  justify-items: center;
 `;
 
 const Cell = styled.div`
-  width: clamp(32px, 4vw, 40px);
-  height: clamp(24px, 3vw, 30px);
+  width: clamp(24px, 3vw, 30px);
+  height: clamp(32px, 4vw, 40px);
   border: 1px solid ${({ theme }) => theme.colors.gray};
   border-radius: 2px;
   display: flex;
@@ -23,7 +29,7 @@ const Cell = styled.div`
   cursor: pointer;
   
   &:hover {
-    background-color: ${({ theme }) => theme.colors.background};
+    background-color: ${({ theme }) => theme.colors.secondary};
   }
 `;
 
@@ -60,21 +66,15 @@ const GameBoard = ({ gameType }) => {
     }
   };
 
-  // 임시 보드 데이터
+  // 10x10 보드 데이터
   const boardData = Array(100).fill(null).map((_, index) => ({
     id: index,
-    card: null,
-    chip: null,
-    playerIndex: null
   }));
 
   return (
     <BoardContainer>
       {boardData.map(cell => (
-        <Cell key={cell.id}>
-          {cell.card && <CardImage cardImage={cell.card} />}
-          {cell.chip && <Chip color={getPlayerColor(cell.playerIndex)} />}
-        </Cell>
+        <Cell key={cell.id} />
       ))}
     </BoardContainer>
   );

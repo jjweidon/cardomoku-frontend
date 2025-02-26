@@ -4,15 +4,14 @@ import { getCardImage } from '../../utils/cardImages';
 
 const CardsContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: clamp(2px, 0.8vh, 4px);
   padding: clamp(2px, 0.8vw, 4px);
+  width: 100%;
   height: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 6px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
-  aspect-ratio: 4/5;
   margin: auto 0;
 `;
 

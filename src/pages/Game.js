@@ -16,29 +16,28 @@ const GameContainer = styled.div`
   overflow: hidden;
 `;
 
-const LeftSection = styled.div`
+const TopSection = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  flex: 1;
 `;
 
-const BoardSection = styled.div`
+const CenterSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  transform: scale(${props => props.scale});
-  transform-origin: center center;
+  overflow: auto;
+  flex: 4;
 `;
 
-const RightSection = styled.div`
+const BottomSection = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 100%;
-  overflow: hidden;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
+  flex: 1;
 `;
 
 const Game = () => {
@@ -70,18 +69,16 @@ const Game = () => {
 
   return (
     <GameContainer>
-      <LeftSection>
+      <TopSection>
         <CardDeck />
         <PlayerList />
-      </LeftSection>
-      <BoardSection>
-        <div ref={boardRef}>
-          <GameBoard gameType={gameType} scale={boardScale} />
-        </div>
-      </BoardSection>
-      <RightSection>
+      </TopSection>
+      <CenterSection>
+        <GameBoard gameType={gameType} scale={boardScale} />
+      </CenterSection>
+      <BottomSection>
         <PlayerCards />
-      </RightSection>
+      </BottomSection>
     </GameContainer>
   );
 };

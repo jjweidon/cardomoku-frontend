@@ -4,14 +4,17 @@ import { useParams } from 'react-router-dom';
 
 const ListContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: clamp(4px, 1.5vh, 8px);
   padding: clamp(4px, 1.5vw, 8px);
+  margin: 10px;
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 6px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
   flex: 1;
-  overflow-y: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
 `;
 
 const PlayerItem = styled.div`
