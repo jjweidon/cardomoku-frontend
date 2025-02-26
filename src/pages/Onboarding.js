@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import CardBackground from '../components/home/CardBackground';
+import CardBackground from '../components/onboarding/CardBackground';
 
 const OnboardingContainer = styled.div`
   width: 100%;
@@ -15,14 +15,12 @@ const OnboardingContainer = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  color: ${({ theme }) => theme.colors.black};
-  margin-bottom: clamp(2rem, 4vw, 3rem);
-  z-index: 2;
+  margin-bottom: clamp(2rem, 0.5vw, 3rem);
+  z-index: 3;
 
-  span {
-    font-size: clamp(3.5rem, 7vw, 8.6rem);
-    font-weight: 100
+  img {
+    width: clamp(200px, 100vw, 500px);
+    height: auto;
   }
 `;
 
@@ -31,6 +29,7 @@ const KakaoButton = styled.img`
   cursor: pointer;
   z-index: 2;
   transition: transform 0.2s;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 
   &:hover {
     transform: translateY(-2px);
@@ -47,7 +46,12 @@ const Onboarding = () => {
   return (
     <OnboardingContainer>
       <CardBackground />
-      <Title><span>s</span>equence</Title>
+      <Title>
+        <img
+          src="/static/logos/logo_text.png"
+          alt="Cardomoku Logo"
+        />
+      </Title>
       <KakaoButton
         src="/static/images/kakao_login_button.png"
         alt="카카오 로그인"

@@ -5,8 +5,8 @@ const urlsToCache = [
   '/favicon.ico',
   '/static/fonts/KOHIBaeumOTF.otf',
   '/static/images/kakao_login_button.png',
-  '/static/icons/icon-192x192.png',
-  '/static/icons/icon-512x512.png'
+  '/static/icons/icon-192.png',
+  '/static/icons/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
