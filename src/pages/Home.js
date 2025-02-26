@@ -5,23 +5,24 @@ import { useNavigate } from 'react-router-dom';
 const HomeContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding: clamp(10px, 2vw, 20px);
+  padding: 20px;
   padding-top: 60px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: clamp(10px, 2vw, 20px);
+  gap: 20px;
   background-color: ${({ theme }) => theme.colors.background};
   overflow: hidden;
 `;
 
 const Section = styled.div`
-  width: clamp(200px, 30vw, 250px);
-  height: clamp(280px, 45vh, 320px);
+  width: 90%;
+  height: auto;
   background-color: ${({ theme }) => theme.colors.white};
-  border-radius: clamp(8px, 1.5vw, 12px);
-  padding: clamp(12px, 1.5vw, 16px);
-  margin-bottom: clamp(20px, 4vh, 30px);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 30px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
   display: flex;
   flex-direction: column;
@@ -35,30 +36,30 @@ const Section = styled.div`
 `;
 
 const SectionTitle = styled.h2`
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: clamp(12px, 2vh, 16px);
+  margin-bottom: 16px;
   text-align: center;
 `;
 
 const SectionDescription = styled.p`
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  font-size: 1rem;
   color: ${({ theme }) => theme.colors.gray};
   text-align: center;
-  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 20px;
 `;
 
 const Button = styled.button`
-  width: clamp(160px, 20vw, 200px);
-  height: clamp(40px, 8vh, 50px);
+  width: 80%;
+  height: 50px;
   background-color: ${({ theme }) => theme.colors.primary};
   color: white;
   border: none;
-  border-radius: clamp(6px, 1vw, 8px);
+  border-radius: 8px;
   cursor: pointer;
-  margin: clamp(8px, 1.5vh, 10px) 0;
+  margin: 10px 0;
   transition: opacity 0.2s;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  font-size: 1rem;
 
   &:hover {
     opacity: 0.9;
@@ -76,40 +77,36 @@ const Modal = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  padding: clamp(16px, 3vh, 24px);
-
-  @media screen and (orientation: landscape) {
-    padding: clamp(12px, 2vw, 20px);
-  }
+  padding: 24px;
 `;
 
 const ModalContent = styled.div`
-  width: clamp(300px, 40vw, 400px);
+  width: 90%;
   max-height: 80vh;
   background-color: white;
-  padding: clamp(20px, 3vw, 30px);
-  border-radius: clamp(8px, 1.5vw, 12px);
+  padding: 30px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(8px, 1.5vh, 12px);
+  gap: 12px;
 `;
 
 const Input = styled.input`
   width: 100%;
-  height: clamp(35px, 6vh, 40px);
+  height: 40px;
   border: 1px solid ${({ theme }) => theme.colors.gray};
-  border-radius: clamp(4px, 0.8vw, 6px);
+  border-radius: 6px;
   padding: 0 10px;
-  margin: clamp(8px, 1.5vh, 10px) 0;
-  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  margin: 10px 0;
+  font-size: 1rem;
 `;
 
 const GameTypeButton = styled(Button)`
   background-color: #363636;
   width: 90%;
-  height: clamp(35px, 7vh, 45px);
-  margin: clamp(4px, 0.8vh, 6px) 0;
+  height: 45px;
+  margin: 6px 0;
   
   &:hover {
     background-color: #4a4a4a;
@@ -118,7 +115,7 @@ const GameTypeButton = styled(Button)`
 
 const CancelButton = styled(GameTypeButton)`
   background-color: ${({ theme }) => theme.colors.primary};
-  margin-top: clamp(8px, 1.6vh, 12px);
+  margin-top: 12px;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary};

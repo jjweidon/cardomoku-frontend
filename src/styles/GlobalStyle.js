@@ -22,12 +22,10 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     background-color: ${({ theme }) => theme.colors.background};
     
-    /* 모바일 최적화 */
     -webkit-overflow-scrolling: touch;
     touch-action: manipulation;
   }
 
-  /* 모바일에서 가로 모드 강제 */
   @media screen and (orientation: portrait) {
     html {
       transform: rotate(-90deg);
@@ -36,6 +34,18 @@ const GlobalStyle = createGlobalStyle`
       height: 100vw;
       position: absolute;
       top: 100%;
+      left: 0;
+    }
+  }
+
+  /* 모바일에서 세로 모드 강제 */
+  @media screen and (orientation: landscape) {
+    html {
+      transform: none;
+      width: 100%;
+      height: 100%;
+      position: static;
+      top: 0;
       left: 0;
     }
   }
@@ -53,16 +63,16 @@ const GlobalStyle = createGlobalStyle`
   #root > div {
     width: 100%;
     height: 100%;
-    max-width: 896px;  /* iPhone 14 Pro Max 가로 해상도 */
-    max-height: 414px; /* iPhone 14 Pro Max 세로 해상도 */
+    max-width: 414px;  /* iPhone 14 Pro Max 세로 해상도 */
+    max-height: 896px; /* iPhone 14 Pro Max 가로 해상도 */
     background-color: ${({ theme }) => theme.colors.background};
     position: relative;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   }
 
-  /* 모바일 가로 모드 최적화 */
-  @media screen and (max-width: 896px) {
+  /* 모바일 세로 모드 최적화 */
+  @media screen and (max-width: 414px) {
     html {
       font-size: 14px;
     }
@@ -72,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  @media screen and (max-width: 667px) {
+  @media screen and (max-width: 375px) {
     html {
       font-size: 12px;
     }

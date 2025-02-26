@@ -19,13 +19,13 @@ const Title = styled.h1`
   z-index: 3;
 
   img {
-    width: clamp(200px, 100vw, 500px);
+    width: clamp(200px, 50vw, 300px);
     height: auto;
   }
 `;
 
 const KakaoButton = styled.img`
-  width: clamp(200px, 40vw, 300px);
+  width: clamp(100px, 30vw, 200px);
   cursor: pointer;
   z-index: 2;
   transition: transform 0.2s;
@@ -45,6 +45,7 @@ const Onboarding = () => {
 
   return (
     <OnboardingContainer>
+      <CardBackground />
       <CardBackground />
       <Title>
         <img

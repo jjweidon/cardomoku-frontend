@@ -10,33 +10,41 @@ const slideAnimation = keyframes`
   }
 `;
 
+const slideAnimationReverse = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+`;
+
 const BackgroundContainer = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.7;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 80%;
   overflow: hidden;
+  transform: translate(-50%, -50%) rotate(30deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
 `;
 
 const CardRow = styled.div`
-  position: absolute;
   display: flex;
   gap: 2rem;
-  padding: 20px;
+  padding: 10px;
   will-change: transform;
-  
-  top: 25%;
-  left: 50%;
-  transform: translateY(-50%);
   width: max-content;
-  animation: ${slideAnimation} 200s linear infinite;
+  animation: ${({ rowKey }) => rowKey === 1 ? slideAnimation : slideAnimationReverse} 300s linear infinite;
 `;
 
 const Card = styled.div`
-  width: 130px;
-  height: 180px;
+  width: 70px;
+  height: 120px;
   border-radius: 8px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
   background-image: url(${props => props.$cardImage});
@@ -66,11 +74,6 @@ const generateCards = () => {
     });
   });
 
-//   // O 카드 추가
-//   for (let i = 1; i <= 4; i++) {
-//     cards.push({ suit: 'o', version: i.toString() });
-//   }
-
   return cards;
 };
 
@@ -80,7 +83,7 @@ const CardBackground = () => {
   useEffect(() => {
     const allCards = generateCards();
     const shuffledCards = [...allCards].sort(() => Math.random() - 0.5);
-    setCards(shuffledCards.slice(0, 20));  // 카드 수 조정
+    setCards(shuffledCards.slice(0, 90));  // 카드 수 조정
   }, []);
 
   const getCardImage = (card) => {
@@ -97,10 +100,18 @@ const CardBackground = () => {
 
   return (
     <BackgroundContainer>
-      <CardRow>
+      <CardRow rowKey={1}>
         {[...cards, ...cards, ...cards, ...cards].map((card, index) => (  // 4번 반복하여 더 부드러운 전환
           <Card 
-            key={`card-${index}`}
+            key={`card-row1-${index}`}
+            $cardImage={getCardImage(card)}
+          />
+        ))}
+      </CardRow>
+      <CardRow rowKey={2}>
+        {[...cards, ...cards, ...cards, ...cards].map((card, index) => (  // 4번 반복하여 더 부드러운 전환
+          <Card 
+            key={`card-row2-${index}`}
             $cardImage={getCardImage(card)}
           />
         ))}

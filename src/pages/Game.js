@@ -9,10 +9,9 @@ import { useParams } from 'react-router-dom';
 const GameContainer = styled.div`
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: minmax(100px, 12%) 1fr minmax(100px, 12%);
-  gap: clamp(2px, 0.8vw, 6px);
-  padding: clamp(2px, 0.8vw, 6px);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
   background-color: ${({ theme }) => theme.colors.background};
   overflow: hidden;
 `;
@@ -20,7 +19,7 @@ const GameContainer = styled.div`
 const LeftSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: clamp(4px, 1.5vw, 12px);
+  gap: 10px;
   height: 100%;
 `;
 
@@ -36,10 +35,10 @@ const BoardSection = styled.div`
 const RightSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: clamp(2px, 0.8vw, 6px);
+  gap: 10px;
   height: 100%;
   overflow: hidden;
-  padding: clamp(2px, 0.8vw, 6px);
+  padding: 10px;
 `;
 
 const Game = () => {
