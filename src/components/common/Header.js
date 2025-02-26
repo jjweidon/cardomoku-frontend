@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #363636;
+  background-color: ${({ theme }) => theme.colors.secondary};
   box-shadow: ${({ theme }) => theme.shadows.normal};
 `;
 

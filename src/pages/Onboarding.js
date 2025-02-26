@@ -46,10 +46,9 @@ const Onboarding = () => {
   return (
     <OnboardingContainer>
       <CardBackground />
-      <CardBackground />
       <Title>
         <img
-          src="/static/logos/logo_text.png"
+          src="/static/logos/logo_text_gausian.png"
           alt="Cardomoku Logo"
         />
       </Title>
