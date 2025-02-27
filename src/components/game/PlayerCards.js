@@ -9,11 +9,9 @@ const CardsContainer = styled.div`
   padding: clamp(2px, 0.8vw, 4px);
   width: auto;
   height: auto;
-  // background-color: ${({ theme }) => theme.colors.white};
   border-radius: 6px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
-  margin: auto 0;
-  align-items: center;
+  align-items: flex-start;
   justify-items: center;
 `;
 
@@ -25,10 +23,15 @@ const Card = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s, border 0.2s;
+  border: 2px solid transparent;
 
   &:hover {
-    transform: translateX(-3px);
+    transform: translateY(-3px);
+  }
+
+  &.selected {
+    border: 4px solid ${({ theme }) => theme.colors.primary}; /* 선택 시 border 굵게 */
   }
 `;
 
@@ -42,12 +45,20 @@ const PlayerCards = () => {
     { suit: 'spade', number: 'j', version: 1 }
   ];
 
+  const [selectedCard, setSelectedCard] = React.useState(null);
+
+  const handleCardClick = (cardId) => {
+    setSelectedCard(prevSelectedCard => prevSelectedCard === cardId ? null : cardId);
+  };
+
   return (
     <CardsContainer>
       {cards.map((card, index) => (
         <Card 
           key={index} 
           cardImage={getCardImage(card.suit, card.number, card.version)}
+          className={selectedCard === index ? 'selected' : ''}
+          onClick={() => handleCardClick(index)}
         />
       ))}
     </CardsContainer>

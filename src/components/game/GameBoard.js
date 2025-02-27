@@ -30,7 +30,7 @@ const Cell = styled.div`
   cursor: pointer;
   
   &:hover {
-    background-color: ${({ theme }) => theme.colors.secondary};
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* 내부 이미지에 살짝 shadow 추가 */
   }
 `;
 

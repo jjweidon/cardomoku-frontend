@@ -35,21 +35,21 @@ const CenterSection = styled.div`
 const BottomSection = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 10px;
+  align-items: flex-start;
+  padding: 10px 0px;
   flex: 1;
 `;
 
 const ConfirmButton = styled.button`
   margin-left: 10px;
-  padding: 10px 20px;
+  padding: 10px 5px;
   background-color: ${({ theme }) => theme.colors.confirm};
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s;
-  font-size: clamp(10px, 1vw, 12px);
+  font-size: clamp(8px, 1vw, 12px);
   &:hover {
     background-color: ${({ theme }) => theme.colors.secondary};
   }
