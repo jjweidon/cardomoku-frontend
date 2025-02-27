@@ -22,4 +22,4 @@ yarn-error.log*
 .vercel
 
 # static
-/public/static
+# /public/static
