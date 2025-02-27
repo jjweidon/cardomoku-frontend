@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import HomeContainer from '../styles/HomeContainer';
 import Section from '../styles/Section';
 import SectionTitle from '../styles/SectionTitle';
@@ -10,9 +10,14 @@ import ModalContent from '../styles/ModalContent';
 import Input from '../styles/Input';
 import GameTypeButton from '../styles/GameTypeButton';
 import CancelButton from '../styles/CancelButton';
+import theme from '../styles/theme';
 
 const Home = () => {
   const navigate = useNavigate();
+  const { gameType } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const roomType = queryParams.get('type');
   const [modalType, setModalType] = useState(null);
   const [roomCode, setRoomCode] = useState('');
 
@@ -24,7 +29,7 @@ const Home = () => {
   const handleCreateRoom = (type) => {
     // 방 생성 로직
     const newRoomCode = Math.random().toString(36).slice(2, 6).toUpperCase();
-    navigate(`/game/${newRoomCode}`);
+    navigate(`/game/${newRoomCode}?gameType=${type}`);
   };
 
   const handleJoinByCode = () => {
@@ -39,9 +44,9 @@ const Home = () => {
         return (
           <ModalContent>
             <SectionTitle>빠른 입장</SectionTitle>
-            <GameTypeButton onClick={() => handleQuickJoin('1v1')}>1 : 1</GameTypeButton>
-            <GameTypeButton onClick={() => handleQuickJoin('1v1v1')}>1 : 1 : 1</GameTypeButton>
-            <GameTypeButton onClick={() => handleQuickJoin('2v2')}>2 : 2</GameTypeButton>
+            <GameTypeButton onClick={() => handleQuickJoin('1vs1')}>1 : 1</GameTypeButton>
+            <GameTypeButton onClick={() => handleQuickJoin('1vs1vs1')}>1 : 1 : 1</GameTypeButton>
+            <GameTypeButton onClick={() => handleQuickJoin('2vs2')}>2 : 2</GameTypeButton>
             <CancelButton onClick={() => setModalType(null)}>취소</CancelButton>
           </ModalContent>
         );
@@ -49,9 +54,9 @@ const Home = () => {
         return (
           <ModalContent>
             <SectionTitle>방 생성하기</SectionTitle>
-            <GameTypeButton onClick={() => handleCreateRoom('1v1')}>1 : 1</GameTypeButton>
-            <GameTypeButton onClick={() => handleCreateRoom('1v1v1')}>1 : 1 : 1</GameTypeButton>
-            <GameTypeButton onClick={() => handleCreateRoom('2v2')}>2 : 2</GameTypeButton>
+            <GameTypeButton onClick={() => handleCreateRoom('1vs1')}>1 : 1</GameTypeButton>
+            <GameTypeButton onClick={() => handleCreateRoom('1vs1vs1')}>1 : 1 : 1</GameTypeButton>
+            <GameTypeButton onClick={() => handleCreateRoom('2vs2')}>2 : 2</GameTypeButton>
             <CancelButton onClick={() => setModalType(null)}>취소</CancelButton>
           </ModalContent>
         );
@@ -72,6 +77,19 @@ const Home = () => {
         );
       default:
         return null;
+    }
+  };
+
+  const getPlayerColors = () => {
+    switch (roomType) {
+      case '1vs1':
+        return [theme.colors.red, theme.colors.blue];
+      case '1vs1vs1':
+        return [theme.colors.red, theme.colors.blue, theme.colors.green];
+      case '2vs2':
+        return [theme.colors.red, theme.colors.blue, theme.colors.red, theme.colors.blue];
+      default:
+        return [];
     }
   };
 

@@ -14,7 +14,7 @@ const suits = {
   spade: '♠',
   heart: '♥',
   diamond: '♦',
-  club: '♣'
+  clover: '♣'
 };
 
 // 숫자 카드 생성 (2-10)
@@ -65,7 +65,7 @@ Object.entries(suits).forEach(([suitName, suitSymbol]) => {
 for (let i = 1; i <= 4; i++) {
   const svg = createOCardSVG();
   fs.writeFileSync(
-    path.join(CARD_DIR, `o_${i}.svg`),
+    path.join(CARD_DIR, `o_o_${i}.svg`),
     svg
   );
 } 

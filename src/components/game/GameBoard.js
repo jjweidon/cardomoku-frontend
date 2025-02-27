@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { getCardImage } from '../../utils/cardImages';
 
 const BoardContainer = styled.div`
   display: grid;
@@ -52,29 +53,51 @@ const Chip = styled.div`
 `;
 
 const GameBoard = ({ gameType }) => {
-  const getPlayerColor = (index) => {
-    switch (gameType) {
-      case '1v1':
-        return index % 2 === 0 ? "#FF4444" : "#4444FF";
-      case '1v1v1':
-        return index % 3 === 0 ? "#FF4444" : 
-               index % 3 === 1 ? "#4444FF" : "#44FF44";
-      case '2v2':
-        return index % 2 === 0 ? "#FF4444" : "#4444FF";
-      default:
-        return "#000000";
-    }
-  };
+  const cardImages = [
+    // 1
+    getCardImage('o', 'o', 1), getCardImage('spade', '2', 1), getCardImage('spade', '3', 1), getCardImage('spade', '4', 1), getCardImage('spade', '5', 1),
+    getCardImage('spade', '6', 1), getCardImage('spade', '7', 1), getCardImage('spade', '8', 1), getCardImage('spade', '9', 1), getCardImage('o', 'o', 2),
+    // 2
+    getCardImage('clover', '6', 1), getCardImage('clover', '5', 1), getCardImage('clover', '4', 1), getCardImage('clover', '3', 1), getCardImage('clover', '2', 1),
+    getCardImage('heart', 'a', 1), getCardImage('heart', 'k', 1), getCardImage('heart', 'q', 1), getCardImage('heart', '10', 1), getCardImage('spade', '10', 1),
+    // 3
+    getCardImage('clover', '7', 1), getCardImage('spade', 'a', 1), getCardImage('diamond', '2', 1), getCardImage('diamond', '3', 1), getCardImage('diamond', '4', 1),
+    getCardImage('diamond', '5', 1), getCardImage('diamond', '6', 1), getCardImage('diamond', '7', 1), getCardImage('heart', '9', 1), getCardImage('spade', 'q', 1),
+    // 4
+    getCardImage('clover', '8', 1), getCardImage('spade', 'k', 1), getCardImage('clover', '6', 2), getCardImage('clover', '5', 2), getCardImage('clover', '4', 2),
+    getCardImage('clover', '3', 2), getCardImage('clover', '2', 2), getCardImage('diamond', '8', 1), getCardImage('heart', '8', 1), getCardImage('spade', 'k', 2),
+    // 5
+    getCardImage('clover', '9', 1), getCardImage('spade', 'q', 2), getCardImage('clover', '7', 1), getCardImage('heart', '6', 1), getCardImage('heart', '5', 1),
+    getCardImage('heart', '4', 1), getCardImage('heart', 'a', 2), getCardImage('diamond', '9', 1), getCardImage('heart', '7', 1), getCardImage('spade', 'a', 2),
+    // 6
+    getCardImage('clover', '10', 1), getCardImage('spade', '10', 2), getCardImage('clover', '8', 2), getCardImage('heart', '7', 2), getCardImage('heart', '2', 1),
+    getCardImage('heart', '3', 1), getCardImage('heart', 'k', 2), getCardImage('diamond', '10', 1), getCardImage('heart', '6', 2), getCardImage('diamond', '2', 2),
+    // 7
+    getCardImage('clover', 'q', 1), getCardImage('spade', '9', 2), getCardImage('clover', '9', 2), getCardImage('heart', '8', 2), getCardImage('heart', '9', 2),
+    getCardImage('heart', '10', 2), getCardImage('heart', 'q', 2), getCardImage('diamond', 'q', 1), getCardImage('heart', '5', 2), getCardImage('diamond', '3', 2),
+    // 8
+    getCardImage('clover', 'k', 1), getCardImage('spade', '8', 2), getCardImage('clover', '10', 2), getCardImage('clover', 'q', 2), getCardImage('clover', 'k', 2),
+    getCardImage('clover', 'a', 1), getCardImage('diamond', 'a', 1), getCardImage('diamond', 'k', 1), getCardImage('heart', '4', 2), getCardImage('diamond', '4', 2),
+    // 9
+    getCardImage('clover', 'a', 2), getCardImage('spade', '7', 2), getCardImage('spade', '6', 2), getCardImage('spade', '5', 2), getCardImage('spade', '4', 2),
+    getCardImage('spade', '3', 2), getCardImage('spade', '2', 2), getCardImage('heart', '2', 2), getCardImage('heart', '3', 2), getCardImage('diamond', '5', 2),
+    // 10
+    getCardImage('o', 'o', 3), getCardImage('diamond', 'a', 2), getCardImage('diamond', 'q', 2), getCardImage('diamond', 'k', 2), getCardImage('diamond', '10', 2),
+    getCardImage('diamond', '9', 2), getCardImage('diamond', '8', 2), getCardImage('diamond', '7', 2), getCardImage('diamond', '6', 2), getCardImage('o', 'o', 4),
+  ];
 
   // 10x10 보드 데이터
   const boardData = Array(100).fill(null).map((_, index) => ({
     id: index,
+    cardImage: cardImages[index] || null, // 인덱스에 따라 카드 이미지를 설정합니다.
   }));
 
   return (
     <BoardContainer>
       {boardData.map(cell => (
-        <Cell key={cell.id} />
+        <Cell key={cell.id}>
+          {cell.cardImage && <CardImage cardImage={cell.cardImage} />}
+        </Cell>
       ))}
     </BoardContainer>
   );

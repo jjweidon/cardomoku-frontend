@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import theme from '../../styles/theme';
 
 const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: clamp(4px, 1.5vh, 8px);
   padding: clamp(4px, 1.5vw, 8px);
-  margin: 10px;
-  height: 100%;
-  background-color: ${({ theme }) => theme.colors.white};
-  border-radius: 6px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
   flex: 1;
   overflow-x: auto;
@@ -20,66 +16,49 @@ const ListContainer = styled.div`
 const PlayerItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px;
+  gap: 10px;
+  padding: 10px;
+  background-color: ${props => props.color};
+  border-radius: 6px;
+  flex-direction: column;
 `;
 
 const ProfileImage = styled.div`
-  width: clamp(24px, 3vw, 32px);
-  height: clamp(24px, 3vw, 32px);
+  width: 40px;
+  height: 40px;
+  background-color: ${({ theme }) => theme.colors.gray};
   border-radius: 50%;
-  border: 2px solid ${props => props.color};
-  box-shadow: ${props => props.isCurrentTurn ? `0 0 6px ${props.color}` : 'none'};
-  background-image: url(${props => props.src});
-  background-size: cover;
-  background-position: center;
 `;
 
-const PlayerName = styled.span`
-  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+const Nickname = styled.div`
+  font-size: clamp(10px, 1.2vw, 12px);
   color: ${({ theme }) => theme.colors.black};
 `;
 
 const PlayerList = () => {
-  const { gameType } = useParams();
+  const gameType = '2vs2';
 
-  const getPlayers = () => {
+  const getPlayerColors = () => {
     switch (gameType) {
-      case '1v1':
-        return [
-          { id: 1, name: "Player 1", color: "#FF4444", isCurrentTurn: true },
-          { id: 2, name: "Player 2", color: "#4444FF", isCurrentTurn: false }
-        ];
-      case '1v1v1':
-        return [
-          { id: 1, name: "Player 1", color: "#FF4444", isCurrentTurn: true },
-          { id: 2, name: "Player 2", color: "#4444FF", isCurrentTurn: false },
-          { id: 3, name: "Player 3", color: "#44FF44", isCurrentTurn: false }
-        ];
-      case '2v2':
-        return [
-          { id: 1, name: "Red 1", color: "#FF4444", isCurrentTurn: true },
-          { id: 2, name: "Blue 1", color: "#4444FF", isCurrentTurn: false },
-          { id: 3, name: "Red 2", color: "#FF4444", isCurrentTurn: false },
-          { id: 4, name: "Blue 2", color: "#4444FF", isCurrentTurn: false }
-        ];
+      case '1vs1':
+        return [theme.colors.red, theme.colors.blue];
+      case '1vs1vs1':
+        return [theme.colors.red, theme.colors.blue, theme.colors.green];
+      case '2vs2':
+        return [theme.colors.red, theme.colors.blue, theme.colors.red, theme.colors.blue];
       default:
         return [];
     }
   };
 
-  const players = getPlayers();
+  const playerColors = getPlayerColors();
 
   return (
     <ListContainer>
-      {players.map(player => (
-        <PlayerItem key={player.id}>
-          <ProfileImage 
-            src={`/static/images/profile${player.id}.jpg`}
-            color={player.color}
-            isCurrentTurn={player.isCurrentTurn}
-          />
-          <PlayerName>{player.name}</PlayerName>
+      {playerColors.map((color, index) => (
+        <PlayerItem key={index} color={color}>
+          <ProfileImage />
+          <Nickname>Player {index + 1}</Nickname>
         </PlayerItem>
       ))}
     </ListContainer>

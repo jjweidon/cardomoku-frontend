@@ -4,7 +4,7 @@ import GameBoard from '../components/game/GameBoard';
 import PlayerList from '../components/game/PlayerList';
 import CardDeck from '../components/game/CardDeck';
 import PlayerCards from '../components/game/PlayerCards';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const GameContainer = styled.div`
   width: 100%;
@@ -40,8 +40,25 @@ const BottomSection = styled.div`
   flex: 1;
 `;
 
+const ConfirmButton = styled.button`
+  margin-left: 10px;
+  padding: 10px 20px;
+  background-color: ${({ theme }) => theme.colors.confirm};
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: clamp(10px, 1vw, 12px);
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
+`;
+
 const Game = () => {
-  const { gameType } = useParams();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const gameType = queryParams.get('gameType');
   const [boardScale, setBoardScale] = useState(1);
   const boardRef = useRef(null);
 
@@ -67,17 +84,19 @@ const Game = () => {
     return () => window.removeEventListener('resize', adjustBoardSize);
   }, []);
 
+
   return (
     <GameContainer>
       <TopSection>
         <CardDeck />
-        <PlayerList />
+        <PlayerList gameType={gameType} />
       </TopSection>
       <CenterSection>
         <GameBoard gameType={gameType} scale={boardScale} />
       </CenterSection>
       <BottomSection>
         <PlayerCards />
+        <ConfirmButton>확인</ConfirmButton>
       </BottomSection>
     </GameContainer>
   );

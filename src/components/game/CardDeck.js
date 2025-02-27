@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DeckContainer = styled.div`
-  padding: clamp(4px, 1.5vw, 8px);
+  padding: clamp(3px, 1vw, 8px);
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 6px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
@@ -24,8 +24,8 @@ const DeckCount = styled.div`
 
 const CardStack = styled.div`
   position: relative;
-  width: clamp(60px, 8vw, 80px);
-  height: clamp(84px, 11.2vw, 112px);
+  width: clamp(40px, 5vw, 60px);
+  height: clamp(56px, 7vw, 84px);
   margin: 0 auto;
 `;
 
