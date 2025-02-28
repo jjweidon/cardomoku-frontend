@@ -5,8 +5,10 @@ import theme from '../../styles/theme';
 const ListContainer = styled.div`
   display: flex;
   flex-direction: row;
-  gap: clamp(4px, 1.5vh, 8px);
-  padding: clamp(4px, 1.5vw, 8px);
+  justify-content: space-between;
+  gap: clamp(2px, 0.75vh, 4px);
+  padding: clamp(2px, 0.75vw, 4px);
+  margin-left: 10px;
   box-shadow: ${({ theme }) => theme.shadows.normal};
   flex: 1;
   overflow-x: auto;
@@ -16,22 +18,22 @@ const ListContainer = styled.div`
 const PlayerItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 5px;
+  padding: 5px;
   background-color: ${props => props.color};
   border-radius: 6px;
   flex-direction: column;
 `;
 
 const ProfileImage = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background-color: ${({ theme }) => theme.colors.gray};
   border-radius: 50%;
 `;
 
 const Nickname = styled.div`
-  font-size: clamp(10px, 1.2vw, 12px);
+  font-size: clamp(8px, 0.8vw, 10px);
   color: ${({ theme }) => theme.colors.black};
 `;
 

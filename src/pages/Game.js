@@ -21,7 +21,7 @@ const TopSection = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  flex: 1;
+  flex: 0.5;
 `;
 
 const CenterSection = styled.div`
@@ -29,14 +29,14 @@ const CenterSection = styled.div`
   justify-content: center;
   align-items: center;
   overflow: auto;
-  flex: 5;
+  flex: 6.5;
 `;
 
 const BottomSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 10px 0px;
+  // padding: 10px 0px;
   flex: 2;
 `;
 
