@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 import Router from './routes';
 import GlobalStyle from './styles/GlobalStyle';
