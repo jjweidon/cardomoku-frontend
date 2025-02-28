@@ -29,7 +29,7 @@ const CenterSection = styled.div`
   justify-content: center;
   align-items: center;
   overflow: auto;
-  flex: 4;
+  flex: 5;
 `;
 
 const BottomSection = styled.div`
@@ -37,7 +37,7 @@ const BottomSection = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding: 10px 0px;
-  flex: 1;
+  flex: 2;
 `;
 
 const ConfirmButton = styled.button`
@@ -46,7 +46,7 @@ const ConfirmButton = styled.button`
   background-color: ${({ theme }) => theme.colors.confirm};
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 3px;
   cursor: pointer;
   transition: background-color 0.2s;
   font-size: clamp(8px, 1vw, 12px);

@@ -10,28 +10,28 @@ const CardsContainer = styled.div`
   width: auto;
   height: auto;
   border-radius: 6px;
-  box-shadow: ${({ theme }) => theme.shadows.normal};
   align-items: flex-start;
   justify-items: center;
 `;
 
-const Card = styled.div`
+const CardWrapper = styled.div`
   width: clamp(20px, 4vw, 50px);
   height: clamp(40px, 6vw, 100px);
-  background-image: url(${props => props.cardImage});
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   cursor: pointer;
-  transition: transform 0.2s, border 0.2s;
-  border: 2px solid transparent;
-
+  transition: transform 0.2s;
+  
   &:hover {
     transform: translateY(-3px);
   }
+`;
 
+const CardImage = styled.img`
+  width: 100%;
+  height: 100%;
+  transition: box-shadow 0.2s;
+  
   &.selected {
-    border: 4px solid ${({ theme }) => theme.colors.primary}; /* 선택 시 border 굵게 */
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
   }
 `;
 
@@ -54,15 +54,15 @@ const PlayerCards = () => {
   return (
     <CardsContainer>
       {cards.map((card, index) => (
-        <Card 
-          key={index} 
-          cardImage={getCardImage(card.suit, card.number, card.version)}
-          className={selectedCard === index ? 'selected' : ''}
-          onClick={() => handleCardClick(index)}
-        />
+        <CardWrapper key={index} onClick={() => handleCardClick(index)}>
+          <CardImage 
+            src={getCardImage(card.suit, card.number, card.version)}
+            className={selectedCard === index ? 'selected' : ''}
+          />
+        </CardWrapper>
       ))}
     </CardsContainer>
   );
 };
 
-export default PlayerCards; 
+export default PlayerCards;
