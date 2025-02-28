@@ -28,12 +28,10 @@ const GlobalStyle = createGlobalStyle`
 
   @media screen and (orientation: portrait) {
     html {
-      transform: rotate(-90deg);
-      transform-origin: left top;
-      width: 100vh;
-      height: 100vw;
-      position: absolute;
-      top: 100%;
+      width: 100%;
+      height: 100%;
+      position: static;
+      top: 0;
       left: 0;
     }
   }
